@@ -10,7 +10,6 @@ exports.forwardToProject = async (endpoint, payload) => {
     });
 
     console.log(`✅ Forward success → ${endpoint}`);
-    // Heloo
     return { success: true };
   } catch (err) {
     console.error("❌ Forward error:", err.message);
