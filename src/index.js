@@ -12,5 +12,5 @@ app.use(bodyParser.json());
 app.use("/meta", metaWebhookRoutes);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Webhook Hub running on http://localhost:${PORT}`);
+  console.log(`🚀 Webhook Hub running on port number ${PORT}`);
 });
