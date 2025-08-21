@@ -8,9 +8,11 @@ exports.forwardToProject = async (endpoint, payload) => {
         "X-Webhook-Source": "meta-hub",
       },
     });
+
+    console.log(`✅ Forward success → ${endpoint}`);
     return { success: true };
   } catch (err) {
-    console.error("Forward error:", err.message);
+    console.error("❌ Forward error:", err.message);
     return { success: false, error: err.message };
   }
 };
