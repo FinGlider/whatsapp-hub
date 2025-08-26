@@ -4,6 +4,11 @@ const projects = {
     name: "WA PROMOTION",
     endpoint: "https://wapromoapi.finglider.com/whatsapp-webhook",
   },
+  542491768952983: {
+    phoneNumberId: 542491768952983,
+    name: "APPOINTMENT",
+    endpoint: "https://appointmentApi.finglider.com/webhook/whatsapp-webhook",
+  },
 };
 
 // Validate project configuration
