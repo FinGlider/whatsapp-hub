@@ -57,6 +57,7 @@ exports.getProjectsFromPhoneNumberId = async (phoneNumberId) => {
       appId: mapping.phoneNumber.app.id,
       appName: mapping.phoneNumber.app.name,
       verifyToken: mapping.phoneNumber.app.verifyToken,
+      accessToken: mapping.phoneNumber.app.accessToken,
       businessId: mapping.phoneNumber.app.businessAccount.businessId,
       businessName: mapping.phoneNumber.app.businessAccount.name,
       projectId: mapping.project.id,
@@ -94,6 +95,7 @@ exports.getAppByVerifyToken = async (token) => {
       appId: app.id,
       appName: app.name,
       verifyToken: app.verifyToken,
+      accessToken: app.accessToken,
       businessId: app.businessAccount.businessId,
       businessName: app.businessAccount.name,
     };
