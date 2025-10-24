@@ -28,6 +28,12 @@ const App = sequelize.define(
       unique: true,
       field: "verify_token",
     },
+    accessToken: {
+      type: DataTypes.STRING(500),
+      allowNull: true,
+      field: "access_token",
+      comment: "Meta/WhatsApp API access token for this app",
+    },
   },
   {
     tableName: "apps",

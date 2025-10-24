@@ -15,7 +15,7 @@ async function syncDatabase() {
     // Sync all models with the database
     // force: false means it won't drop existing tables
     // alter: true means it will modify tables to match models
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ alter: false });
 
     console.log("✅ Database models synced successfully");
 
