@@ -15,8 +15,6 @@ const webhookQueue = new Bull("webhook-forwarding", {
 webhookQueue.process(async (job) => {
   const { endpoint, payload, projectName, phoneNumberId } = job.data;
 
-  console.log(`📤 Forwarding webhook to ${projectName} (${endpoint})`);
-
   try {
     const response = await axios.post(endpoint, payload, {
       timeout: 10000,
@@ -40,18 +38,6 @@ webhookQueue.process(async (job) => {
       `Failed to forward webhook to ${endpoint}: ${error.message}`
     );
   }
-});
-
-// Event listeners for monitoring
-webhookQueue.on("completed", (job, result) => {
-  console.log(`✅ Job ${job.id} completed for ${job.data.projectName}`);
-});
-
-webhookQueue.on("failed", (job, err) => {
-  console.error(
-    `❌ Job ${job.id} failed for ${job.data.projectName}:`,
-    err.message
-  );
 });
 
 webhookQueue.on("stalled", (job) => {
