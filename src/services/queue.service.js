@@ -1,3 +1,4 @@
+require("dotenv").config({ path: require("path").resolve(__dirname, "../../.env") });
 const Bull = require("bull");
 const axios = require("axios");
 
@@ -17,19 +18,14 @@ webhookQueue.process(async (job) => {
   console.log(`📤 Forwarding webhook to ${projectName} (${endpoint})`);
 
   try {
-    const headers = {
-      "Content-Type": "application/json",
-      "User-Agent": "WhatsApp-Hub/1.0",
-      "X-Phone-Number-ID": phoneNumberId,
-    };
-
-    if (endpoint.includes("wapromoapi") && process.env.WEBHOOK_FORWARD_SECRET) {
-      headers["X-Webhook-Forward-Secret"] = process.env.WEBHOOK_FORWARD_SECRET;
-    }
-
     const response = await axios.post(endpoint, payload, {
-      timeout: 10000, // 10 second timeout
-      headers,
+      timeout: 10000,
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": "WhatsApp-Hub/1.0",
+        "X-Phone-Number-ID": phoneNumberId,
+        "X-Webhook-Forward-Secret": process.env.WEBHOOK_FORWARD_SECRET,
+      },
     });
 
     console.log(
